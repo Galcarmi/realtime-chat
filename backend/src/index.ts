@@ -1,10 +1,25 @@
 import express from "express";
-import { createLogger } from "./logger/logger";
+import { logger } from "./logger/logger";
+import socketIo from "socket.io";
+import * as http from "http";
 
-const logger = createLogger();
 const app = express();
-const PORT = 8000;
-app.get("/", (req, res) => res.send("Express + TypeScript Server"));
-app.listen(PORT, () => {
-  logger.info(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+const port = process.env.PORT || 8000;
+app.set("port", port);
+
+const httpServer = new http.Server(app);
+const io = new socketIo.Server(httpServer);
+
+app.get("/", (req: any, res: any) => {
+  res.send("hi there");
+});
+
+io.on("connection", (socket: any) => {
+    socket.on("message", (message: any) => {
+        socket.emit("message", message);
+      });
+});
+
+const server = httpServer.listen(port, () => {
+  logger.info(`listening on ${port}`);
 });
