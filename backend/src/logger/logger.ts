@@ -1,7 +1,7 @@
 import winston from 'winston';
 
-export function createLogger() {
-  const logger = winston.createLogger({
+function createLogger() {
+  const loggerInstance = winston.createLogger({
     level: "info",
     format: winston.format.json(),
     defaultMeta: { service: "user-service" },
@@ -11,5 +11,7 @@ export function createLogger() {
     ],
   });
 
-  return logger;
+  return loggerInstance;
 }
+
+export const logger = createLogger();
