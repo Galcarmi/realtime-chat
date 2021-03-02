@@ -2,6 +2,7 @@ import express from "express";
 import { logger } from "./logger/logger";
 import socketIo from "socket.io";
 import * as http from "http";
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -9,6 +10,9 @@ app.set("port", port);
 
 const httpServer = new http.Server(app);
 const io = new socketIo.Server(httpServer);
+
+app.options('*', cors());
+app.use(cors());
 
 app.get("/", (req: any, res: any) => {
   res.send("hi there");

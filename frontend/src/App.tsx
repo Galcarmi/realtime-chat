@@ -5,7 +5,7 @@ import { get } from './utils/axios-utils/axiosUtils';
 function App() {
 
   useEffect(() => {
-    get().then((res: any) => console.log(res));
+    get("").then((res: any) => console.log(res));
   }, [])
 
 
