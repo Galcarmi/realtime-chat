@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { get } from './utils/axios-utils/axiosUtils';
-
+import Chat from './components/chat/Chat';
+import FriendsPanel from './components/friends-panel/FriendsPanel';
+import { serverGet } from './utils/axios-utils/axiosUtils';
 function App() {
 
   useEffect(() => {
-    get("").then((res: any) => console.log(res));
+    serverGet("").then((res: any) => console.log(res));
   }, [])
 
 
   return (
     <div className="App">
-      <div>React App</div>
+      <FriendsPanel></FriendsPanel>
+      <Chat></Chat>
     </div>
   );
 }
