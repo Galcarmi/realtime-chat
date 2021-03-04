@@ -1,0 +1,12 @@
+.chat_application_layout{
+    display:flex;
+    height:100%;
+}
+
+.friends_panel_layout{
+width:25%;
+}
+
+.chat_layout{
+width:75%;
+}

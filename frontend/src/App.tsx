@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
-import './App.css';
-import Chat from './components/chat/Chat';
-import FriendsPanel from './components/friends-panel/FriendsPanel';
-import { serverGet } from './utils/axios-utils/axiosUtils';
+import ChatApplication from './components/container/chat-application/ChatApplication';
+import Container from './components/container/Container';
+import Header from './components/container/header/Header';
+import { getFromServer } from './utils/axios-utils';
+import s from './App.module.css'
+
 function App() {
 
-  useEffect(() => {
-    serverGet("").then((res: any) => console.log(res));
-  }, [])
-
-
+  useEffect(()=>{
+    getFromServer("").then(res=>{console.log(res)});
+  },[])
   return (
-    <div className="App">
-      <FriendsPanel></FriendsPanel>
-      <Chat></Chat>
+    <div className={s.root}>
+    <Header name="Realtime-Chat App"/>
+    <Container>
+      <ChatApplication/>
+    </Container>
     </div>
   );
 }
