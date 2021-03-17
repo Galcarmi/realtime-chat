@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import ChatApplication from './components/container/chat-application/ChatApplication';
-import Container from './components/container/Container';
-import Header from './components/container/header/Header';
+import ChatApplication from './components/chat-application/ChatApplication';
+import Container from './components/utils/container/Container';
+import Header from './components/header/Header';
 import { getFromServer } from './utils/axios-utils';
 import s from './App.module.css'
 
