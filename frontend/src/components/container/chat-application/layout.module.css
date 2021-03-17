@@ -1,6 +1,6 @@
 .chat_application_layout {
   display: flex;
-  height: 100%;
+  height: calc(100% - 50px);
 }
 
 .friends_panel_layout {

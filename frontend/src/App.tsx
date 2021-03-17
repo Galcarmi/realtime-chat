@@ -12,7 +12,7 @@ function App() {
   },[])
   return (
     <div className={s.root}>
-    <Header name="Realtime-Chat App" height={50}/>
+    <Header name="" height={50}/>
     <Container>
       <ChatApplication/>
     </Container>
