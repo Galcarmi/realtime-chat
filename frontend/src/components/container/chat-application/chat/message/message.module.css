@@ -1,0 +1,29 @@
+.friendMessage{
+    border-radius: 25px;
+    border: solid 2px rgba(82,153,229,1);
+    color:rgba(82,153,229,1);
+    margin: 3px;
+    padding:5px 15px 5px 15px;
+    width:fit-content;
+    font-size:1.2em;
+}
+
+.friendMessageContainer{
+    display:flex;
+    margin: 3px;
+}
+
+.userMessage{
+    border-radius: 25px;
+    background-color: rgba(82,153,229,1);
+    padding:5px 15px 5px 15px;
+    width:fit-content;
+    color:white;
+    font-size:1.2em;
+}
+
+.userMessageContainer{
+    display:flex;
+    flex-direction: row-reverse;
+    margin: 3px;
+}
