@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 
+type MessageProps = {
+    content: string;
+}
 
-function Message() {
+const Message: FC<MessageProps> = (props) => {
     return (
         <div>
-            Message
+            {props.content}
         </div>
     );
 }

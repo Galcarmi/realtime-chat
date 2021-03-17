@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Line from '../utils/line/Line';
 import Chat from './chat/Chat';
 import FriendsPanel from './friends-panel/FriendsPanel';
 const s = require('./layout.module.css');
@@ -10,6 +11,7 @@ const ChatApplication : FC<ChatApplicationProps>  = (props) => {
     return (
         <div className={[s.chat_application_layout, chatApplicationStyles.chat_application].join(' ')}>
              <FriendsPanel></FriendsPanel>
+             <Line horizontal={false}/>
              <Chat></Chat>
         </div>
     );

@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 
 type HeaderProps = {
-    name:string
+    name:string;
+    height:number;
 }
 
 const Header : FC<HeaderProps>  = (props) => {
     return (
-        <div>
+        <div style={{height:props.height}}>
             {props.name}
         </div>
     );

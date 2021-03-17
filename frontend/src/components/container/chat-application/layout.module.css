@@ -1,12 +1,14 @@
-.chat_application_layout{
-    display:flex;
-    height:100%;
+.chat_application_layout {
+  display: flex;
+  height: 100%;
 }
 
-.friends_panel_layout{
-width:25%;
+.friends_panel_layout {
+  width: 25%;
+  padding:10px;
 }
 
-.chat_layout{
-width:75%;
+.chat_layout {
+  width: 75%;
+  padding:10px;
 }
