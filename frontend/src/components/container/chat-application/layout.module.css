@@ -16,9 +16,10 @@
 
 .chatLayout{
   padding:10px;
-  height:85%;
+  height:95%;
 }
 
-.messageInputLayout{
+.messageInputContainerLayout{
+  height:5%;
   padding:10px;
 }

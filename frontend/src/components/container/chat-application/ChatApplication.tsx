@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Line from '../utils/line/Line';
 import Chat from './chat/Chat';
-import MessageInput from './messageInput/MessageInput';
+import MessageInputContainer from './messageInputContainer/MessageInputContainer';
 import FriendsPanel from './friends-panel/FriendsPanel';
 const s = require('./layout.module.css');
 const chatApplicationStyles = require('./chatApplication.module.css');
@@ -16,7 +16,7 @@ const ChatApplication: FC<ChatApplicationProps> = (props) => {
             <div className={s.chatContainerLayout}>
                 <Chat className={s.chatLayout}/>
                 <Line horizontal/>
-                <MessageInput className={s.messageInputLayout}/>
+                <MessageInputContainer className={s.messageInputContainerLayout}/>
             </div>
         </div>
     );
