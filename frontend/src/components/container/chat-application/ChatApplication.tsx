@@ -1,18 +1,23 @@
 import React, { FC } from 'react';
 import Line from '../utils/line/Line';
 import Chat from './chat/Chat';
+import MessageInput from './messageInput/MessageInput';
 import FriendsPanel from './friends-panel/FriendsPanel';
 const s = require('./layout.module.css');
 const chatApplicationStyles = require('./chatApplication.module.css');
 
 type ChatApplicationProps = {}
 
-const ChatApplication : FC<ChatApplicationProps>  = (props) => {
+const ChatApplication: FC<ChatApplicationProps> = (props) => {
     return (
         <div className={[s.chat_application_layout, chatApplicationStyles.chat_application].join(' ')}>
-             <FriendsPanel></FriendsPanel>
-             <Line horizontal={false}/>
-             <Chat></Chat>
+            <FriendsPanel className={s.friends_panel_layout}/>
+            <Line horizontal={false} />
+            <div className={s.chatContainerLayout}>
+                <Chat className={s.chatLayout}/>
+                <Line horizontal/>
+                <MessageInput className={s.messageInputLayout}/>
+            </div>
         </div>
     );
 }

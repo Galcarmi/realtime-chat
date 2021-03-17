@@ -8,7 +8,17 @@
   padding:10px;
 }
 
-.chat_layout {
+.chatContainerLayout {
   width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatLayout{
+  padding:10px;
+  height:85%;
+}
+
+.messageInputLayout{
   padding:10px;
 }

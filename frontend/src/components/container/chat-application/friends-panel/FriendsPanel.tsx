@@ -1,14 +1,18 @@
 import React, { FC } from 'react';
 import FriendView from './friend-view/FriendView';
-import s from '../layout.module.css';
-type FriendsPanelProps = {}
+import Line from '../../utils/line/Line';
+type FriendsPanelProps = {
+    className: string;
+}
 
-const FriendsPanel : FC<FriendsPanelProps> = () => {
+const FriendsPanel : FC<FriendsPanelProps> = (props) => {
     return (
-        <div className={s.friends_panel_layout}>
-            <FriendView></FriendView>
-            <FriendView></FriendView>
-            <FriendView></FriendView>
+        <div className={props.className}>
+            <FriendView name="gal"></FriendView>
+            <Line horizontal/>
+            <FriendView name="ido"></FriendView>
+            <Line horizontal/>
+            <FriendView name="or"></FriendView>
         </div>
     );
 }

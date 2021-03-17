@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {FC} from 'react';
+import s from './friendView.module.css';
 
+interface FriendViewProps {
+    name:string;
+}
 
-function FriendView() {
+const FriendView:FC<FriendViewProps> = (props) =>{
     return (
-        <div>
-            FriendView
+        <div className={s.friendView}>
+            {props.name}
         </div>
     );
 }
