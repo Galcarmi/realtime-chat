@@ -2,3 +2,8 @@
     background-color: black;
     justify-self:end;
 }
+
+
+.chat{
+    overflow:scroll;
+}
