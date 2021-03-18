@@ -16,5 +16,4 @@ export class MessageRequest implements IMessageRequest{
             this.channel = reqObj.channel;
         }
     }
-        
 }
