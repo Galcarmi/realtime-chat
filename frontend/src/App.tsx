@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ChatApplication from './components/chat-application/ChatApplication';
 import Container from './components/utils/container/Container';
 import Header from './components/header/Header';

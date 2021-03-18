@@ -11,20 +11,24 @@ interface ChatProps {
 const Chat: FC<ChatProps> = (props) => {
     const [messages, setMessages] = useState<any[]>([]);
 
-
-    const listenToSocket = () => {
-        socket.on("global", (data: any) => {
-            console.log(messages)
-            setMessages([...messages, data]);
-        });
-    }
-
     useEffect(() => {
-        messageService.getOlderMessages().then(messagesRes => {
-            setMessages(messagesRes);
-        });
+        let updatedMessages: any[] = [];
 
-        listenToSocket();
+        const updateMessagesState = ((messageRes: any) => {
+            setMessages((messages: any[]) => {
+                if(messageRes.length){
+                    updatedMessages = [...messages, ...messageRes];
+                }
+                else{
+                    updatedMessages = [...messages, messageRes];
+                }
+                return updatedMessages;
+            });
+        })
+        
+        messageService.getOlderMessages().then(updateMessagesState);
+
+        socket.on("global", updateMessagesState);
     }, []);
 
 
