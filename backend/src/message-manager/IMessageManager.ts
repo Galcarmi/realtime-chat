@@ -1,3 +1,8 @@
+import { IMessage } from "./message/IMessage";
+import { IMessageRequest } from "./message/IMessageRequest";
+
 export interface IMessageManager {
-  sendMessageToChannel(message: string, channel: string): void;
+  m_Messages:IMessage[];
+  sendMessageToChannel(messageRequest : IMessageRequest): void;
+  getLastXMessages(lastMessagesCount : number): IMessage[];
 }
