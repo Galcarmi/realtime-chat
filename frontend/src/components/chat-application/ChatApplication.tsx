@@ -8,7 +8,7 @@ const chatApplicationStyles = require('./chatApplication.module.css');
 
 type ChatApplicationProps = {}
 
-const ChatApplication: FC<ChatApplicationProps> = (props) => {
+const ChatApplication: FC<ChatApplicationProps> = () => {
     return (
         <div className={[s.chat_application_layout, chatApplicationStyles.chat_application].join(' ')}>
             <FriendsPanel className={s.friends_panel_layout}/>
