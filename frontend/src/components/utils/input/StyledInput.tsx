@@ -10,9 +10,7 @@ type StyledInputProps = {
 
 const StyledInput : FC<StyledInputProps>  = (props) => {
     return (
-        <div className={props.className}>
-            <Input onChange={props.onChange} inputContent={props.inputContent} className={s.messageInput}></Input>
-        </div>
+        <Input onChange={props.onChange} inputContent={props.inputContent} className={[s.messageInput, props.className].join(' ')}></Input>
     );
 }
 
