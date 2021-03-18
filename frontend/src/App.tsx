@@ -3,18 +3,8 @@ import ChatApplication from './components/chat-application/ChatApplication';
 import Container from './components/utils/container/Container';
 import Header from './components/header/Header';
 import s from './App.module.css'
-// import { io } from "socket.io-client";
-// const ENDPOINT = "http://127.0.0.1:8000";
 
 function App() {
-
-  useEffect(()=>{
-    // const socket = io(ENDPOINT);
-    // socket.on("global", (data:any) => {
-    //   console.log(data);
-    // });
-  },[])
-
   return (
     <div className={s.root}>
     <Header name="" height={50}/>
