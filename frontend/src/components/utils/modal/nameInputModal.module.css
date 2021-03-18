@@ -28,3 +28,15 @@
     margin-top:10%;
     flex:inherit;
 }
+
+.btn{
+    height:35px;
+    margin-top:10%;
+    width:20%;
+}
+
+.btn:focus{
+    height:35px;
+    margin-top:10%;
+    width:20%;
+}
