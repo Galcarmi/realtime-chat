@@ -35,7 +35,7 @@ const Chat: FC<ChatProps> = (props) => {
 
     return (
         <div className={[props.className, s.chat].join(' ')}>
-            {messages.map((message: any) => { return (<Message key={message.id} content={message.content}></Message>) })}
+            {messages.map((message: any, i:number) => { return (<Message key={i} content={message.content}></Message>) })}
         </div>
     );
 }
