@@ -32,9 +32,9 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
             });
         })
 
-        const deleteFriendFromState = (friendName:string) =>{
+        const deleteFriendFromState = (i_Friend:IFriend) =>{
             setFriends(() => {
-                return updatedFriends.filter(friend=>friend !== friendName)
+                return updatedFriends.filter(friend=>friend.id !== i_Friend.id)
             });
         }
         
