@@ -21,7 +21,6 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
         let updatedFriends: any[] = [];
 
         const updateFriendsState = ((friendsRes: any) => {
-            console.log('ressss', friendsRes)
             setFriends((friends: any[]) => {
                 if(friendsRes.length && ! (typeof(friendsRes) === 'string')){
                     updatedFriends = [...friends, ...friendsRes];
