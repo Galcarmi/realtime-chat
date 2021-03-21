@@ -7,7 +7,6 @@ interface ChatProps {
     className?: string;
 }
 
-
 const Chat: FC<ChatProps> = (props) => {
     const [messages, setMessages] = useState<any[]>([]);
 
@@ -37,7 +36,7 @@ const Chat: FC<ChatProps> = (props) => {
             {messages.map((message: any, i: number) => {
                 return (
                     <Message key={i} content={message.content}
-                        friendMessage={message.userId !== socketUtil.getUserId()} userName={message.userName}/>)
+                        friendMessage={message.userId !== socketUtil.getUserId()} userName={message.userName} />)
             })}
         </div>
     );

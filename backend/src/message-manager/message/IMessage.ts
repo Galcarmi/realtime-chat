@@ -1,8 +1,8 @@
-export interface IMessage{
-    author:string;
-    content:string;
-    createdDate:Date;
-    id:string;
-    userId:string;
-    userName:string;
+export interface IMessage {
+  author: string;
+  content: string;
+  createdDate: Date;
+  id: string;
+  userId: string;
+  userName: string;
 }

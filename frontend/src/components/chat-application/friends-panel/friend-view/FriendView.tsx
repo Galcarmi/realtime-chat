@@ -1,14 +1,14 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import s from './friendView.module.css';
 
 interface FriendViewProps {
-    name:string;
-    isFriendView:boolean;
+    name: string;
+    isFriendView: boolean;
 }
 
-const FriendView:FC<FriendViewProps> = (props) =>{
+const FriendView: FC<FriendViewProps> = (props) => {
     return (
-        <div className={props.isFriendView?s.friendView:s.userView}>
+        <div className={props.isFriendView ? s.friendView : s.userView}>
             {props.name}
         </div>
     );

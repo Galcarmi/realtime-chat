@@ -8,14 +8,14 @@ type MessageInputProps = {
     className?: string;
 }
 
-const Header : FC<MessageInputProps>  = (props) => {
+const Header: FC<MessageInputProps> = (props) => {
     const [inputContent, setInputContent] = useState('');
 
-    const handleSendMessage = () =>{
+    const handleSendMessage = () => {
         socketUtil.getSocket().emit('message', new MessageRequest({
-            author:'gal',
-            content:inputContent,
-            channel:'global'
+            author: 'gal',
+            content: inputContent,
+            channel: 'global'
         }))
 
         setInputContent('');
@@ -23,7 +23,7 @@ const Header : FC<MessageInputProps>  = (props) => {
 
     return (
         <div className={[props.className, s.layout].join(' ')}>
-            <StyledInput inputContent={inputContent} onChange={e=>{setInputContent(e.target.value)}}></StyledInput>
+            <StyledInput inputContent={inputContent} onChange={e => { setInputContent(e.target.value) }}></StyledInput>
             <Button handleClick={handleSendMessage} label="Send"></Button>
         </div>
     );

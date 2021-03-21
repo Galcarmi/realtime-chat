@@ -44,7 +44,7 @@ io.on("connection", (socket: any) => {
   console.log("friends pool", friendsManager.getAllConnectedFriends());
 
   socket.on("disconnecting", () => {
-    console.log('friend disconnected', user)
+    console.log("friend disconnected", user);
     friendsManager.deleteFriend(user);
     friendsManager.notifyChannelOnFriendDisconnected(user);
   });

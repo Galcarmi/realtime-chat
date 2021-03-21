@@ -1,4 +1,4 @@
-export interface IFriend{
-    name:string;
-    id:string;
+export interface IFriend {
+  name: string;
+  id: string;
 }

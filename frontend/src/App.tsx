@@ -10,7 +10,7 @@ function App() {
   return (
     <div className={s.root}>
       {!isUsernameSetted ?
-        <NameInputModal setNameCallback = {()=>{setIsUsernameSetted(true)}}></NameInputModal>
+        <NameInputModal setNameCallback={() => { setIsUsernameSetted(true) }}></NameInputModal>
         :
         <>
           <Header name="" height={50} />

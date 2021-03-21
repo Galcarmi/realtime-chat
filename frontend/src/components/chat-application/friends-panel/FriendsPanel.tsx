@@ -17,12 +17,12 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
         let updatedFriends: any[] = [];
 
         const updateFriendsState = ((friendsRes: any) => {
-            if(friendsRes.length || friendsRes.name){
+            if (friendsRes.length || friendsRes.name) {
                 setFriends((friends: any[]) => {
-                    if(friendsRes.length){
+                    if (friendsRes.length) {
                         updatedFriends = [...friends, ...friendsRes];
                     }
-                    else if(friendsRes.name){
+                    else if (friendsRes.name) {
                         updatedFriends = [...friends, friendsRes];
                     }
                     return updatedFriends;
@@ -30,24 +30,24 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
             }
         })
 
-        const deleteFriendFromState = (i_Friend:IFriend) =>{
+        const deleteFriendFromState = (i_Friend: IFriend) => {
             setFriends(() => {
-                return updatedFriends.filter(friend=>friend.id !== i_Friend.id)
+                return updatedFriends.filter(friend => friend.id !== i_Friend.id)
             });
         }
-        
+
         chatService.getConnectedUsers().then(updateFriendsState);
-        
+
         socketUtil.getSocket().on('newUser', updateFriendsState);
         socketUtil.getSocket().on('friendDisconnected', deleteFriendFromState);
     }, []);
-    
+
     return (
         <div className={props.className}>
             <Line horizontal />
-            {friends.map((friend) => 
+            {friends.map((friend) =>
                 <div key={friend.id}><FriendView name={friend.name} isFriendView={friend.id !== socketUtil.getUserId()}></FriendView>
-                <Line horizontal /></div>
+                    <Line horizontal /></div>
             )}
         </div>
     );
