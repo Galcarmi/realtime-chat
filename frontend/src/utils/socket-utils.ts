@@ -2,7 +2,7 @@ import { io, Socket } from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
 const ENDPOINT = "http://127.0.0.1:8000";
 
-export class SocketUtil{
+export class ChatSocketUtil{
     m_Username?: string;
     m_Socket?:Socket;
     m_UserId?: string;
@@ -27,7 +27,7 @@ export class SocketUtil{
     }
 }
 
-export const socketUtil = new SocketUtil();
+export const socketUtil = new ChatSocketUtil();
 
 
 

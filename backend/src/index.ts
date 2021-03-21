@@ -5,7 +5,7 @@ import * as http from "http";
 import cors from "cors";
 import { MessageManager } from "./message-manager/MassageManager";
 import { MessageRequest } from "./message-manager/message/MessageRequest";
-import { FriendsManager } from './friends-manager/FriendsManager';
+import { FriendsManager } from "./friends-manager/FriendsManager";
 import bodyParser from "body-parser";
 import { handleError } from "./utils/error-utils";
 
@@ -27,28 +27,28 @@ app.get("/alive", (req: any, res: any) => {
   res.status(200).json();
 });
 
-app.post("/message", (req : express.Request, res:express.Response) => {
-  try {
-    const messageRequest = new MessageRequest(req.body);
-    messageManager.sendMessageToChannel(messageRequest);
-    res.status(200).json();
-  } catch (e) {
-    handleError(e, res);
-  }
-});
+// app.post("/message", (req : express.Request, res:express.Response) => {
+//   try {
+//     const messageRequest = new MessageRequest(req.body);
+//     messageManager.sendMessageToChannel(messageRequest);
+//     res.status(200).json();
+//   } catch (e) {
+//     handleError(e, res);
+//   }
+// });
 
-app.get("/messages", (_ : express.Request, res:express.Response) => {
+app.get("/messages", (_: express.Request, res: express.Response) => {
   res.send(messageManager.getLastXMessages(10));
 });
 
-app.get("/friends", (_ : express.Request, res:express.Response) => {
+app.get("/friends", (_: express.Request, res: express.Response) => {
   res.send(friendsManager.getAllConnectedFriends());
 });
 
 io.on("connection", (socket: any) => {
   const friendName = socket.handshake.query.username;
   const friendId = socket.handshake.query.id;
-  const friend = {name:friendName,id:friendId};
+  const friend = { name: friendName, id: friendId };
   friendsManager.addFriend(friend);
   friendsManager.notifyChannelOnNewFriend(friend);
   console.log("friends pool", friendsManager.getAllConnectedFriends());
@@ -56,6 +56,15 @@ io.on("connection", (socket: any) => {
   socket.on("disconnecting", () => {
     friendsManager.deleteFriend(friend);
     friendsManager.notifyChannelOnFriendDisconnected(friend);
+  });
+
+  socket.on("message", (message: MessageRequest) => {
+    try {
+      const messageRequest = new MessageRequest(message);
+      messageManager.sendMessageToChannel(messageRequest);
+    } catch (e) {
+      handleError(e);
+    }
   });
 });
 
