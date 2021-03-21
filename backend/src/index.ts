@@ -62,7 +62,7 @@ io.on("connection", (socket: any) => {
   socket.on("message", (message: MessageRequest) => {
     try {
       const messageRequest = new MessageRequest(message);
-      messageManager.sendMessageToChannel(messageRequest, user.id);
+      messageManager.sendMessageToChannel(messageRequest, user);
     } catch (e) {
       handleError(e);
     }

@@ -27,3 +27,7 @@
     flex-direction: row-reverse;
     margin: 3px;
 }
+
+.messageAuthor{
+    color:black;
+}

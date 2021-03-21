@@ -4,4 +4,5 @@ export interface IMessage{
     createdDate:Date;
     id:string;
     userId:string;
+    userName:string;
 }
