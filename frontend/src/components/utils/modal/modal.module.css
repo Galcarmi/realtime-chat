@@ -12,6 +12,8 @@
     left:50%;
     height:50vh;
     width:50vw;
+    max-height: 600px;
+    max-width: 600px;
     background-color:white;
     transform: translate(-50%,-50%);
     border-radius:25px;
