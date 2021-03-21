@@ -12,7 +12,7 @@ const Message: FC<MessageProps> = (props) => {
         
         <div className={s[`${props.friendMessage?'friend':'user'}MessageContainer`]}>
             <div className={s[`${props.friendMessage?'friend':'user'}Message`]}>
-            <div className={s.messageAuthor}>{props.userName}</div>
+            <div className={s[`${props.friendMessage?'friend':'user'}MessageAuthor`]}>{props.userName}</div>
                 {props.content}
             </div>
         </div>

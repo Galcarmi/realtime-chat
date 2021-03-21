@@ -28,6 +28,11 @@
     margin: 3px;
 }
 
-.messageAuthor{
+.friendMessageAuthor{
+    color:black;
+}
+
+.userMessageAuthor{
+    text-align: right;
     color:black;
 }
