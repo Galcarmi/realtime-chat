@@ -3,7 +3,7 @@ import FriendView from './friend-view/FriendView';
 import Line from '../../utils/line/Line';
 import { socketUtil } from '../../../utils/socket-utils';
 import { chatService } from '../../../services/chatService/chatService';
-import { IFriend } from '../../../../../common/chat-utils/IFriend';
+import { IFriend } from '../../../common/chat-utils/IFreind';
 
 type FriendsPanelProps = {
     className: string;
