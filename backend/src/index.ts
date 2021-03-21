@@ -5,6 +5,7 @@ import * as http from "http";
 import cors from "cors";
 import { MessageManager } from "./message-manager/MassageManager";
 import { MessageRequest } from "./message-manager/message/MessageRequest";
+import { FriendsManager } from './friends-manager/FriendsManager';
 import bodyParser from "body-parser";
 import { handleError } from "./utils/error-utils";
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const messageManager = new MessageManager(io);
+const friendsManager = new FriendsManager(io);
 
 app.get("/alive", (req: any, res: any) => {
   res.status(200).json();
@@ -39,8 +41,20 @@ app.get("/messages", (_ : express.Request, res:express.Response) => {
   res.send(messageManager.getLastXMessages(10));
 });
 
+app.get("/friends", (_ : express.Request, res:express.Response) => {
+  res.send(friendsManager.getAllConnectedFriends());
+});
+
 io.on("connection", (socket: any) => {
-  console.log("user connected!");
+  const friendName = socket.handshake.query.username;
+  friendsManager.addFriend(friendName);
+  friendsManager.notifyChannelOnNewFriend(friendName);
+  console.log("friends pool", friendsManager.getAllConnectedFriends());
+
+  socket.on("disconnecting", () => {
+    friendsManager.deleteFriend(friendName);
+    friendsManager.notifyChannelOnFriendDisconnected(friendName);
+  });
 });
 
 httpServer.listen(port, () => {

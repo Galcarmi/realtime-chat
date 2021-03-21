@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import s from './messageInputContainer.module.css';
-import {messageService} from '../../../services/messageService/messageService';
-import { MessageRequest } from '../../../services/messageService/MessageRequest';
+import {chatService} from '../../../services/chatService/chatService';
+import { MessageRequest } from '../../../services/chatService/MessageRequest';
 import StyledInput from '../../utils/input/StyledInput';
 import Button from '../../utils/button/Button';
 
@@ -13,7 +13,7 @@ const Header : FC<MessageInputProps>  = (props) => {
     const [inputContent, setInputContent] = useState('');
 
     const handleSendMessage = () =>{
-        messageService.sendMessageToChannel(new MessageRequest({
+        chatService.sendMessageToChannel(new MessageRequest({
             author:'gal',
             content:inputContent,
             channel:'global'
