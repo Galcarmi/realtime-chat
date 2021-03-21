@@ -25,6 +25,10 @@ export class ChatSocketUtil{
 
         return this.m_Socket;
     }
+
+    getUserId(){
+        return this.m_UserId;
+    }
 }
 
 export const socketUtil = new ChatSocketUtil();

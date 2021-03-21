@@ -15,12 +15,12 @@ const Chat: FC<ChatProps> = (props) => {
         let updatedMessages: any[] = [];
 
         const updateMessagesState = ((messageRes: any) => {
-            if(messageRes.content || messageRes.length){
+            if (messageRes.content || messageRes.length) {
                 setMessages((messages: any[]) => {
-                    if(messageRes.length){
+                    if (messageRes.length) {
                         updatedMessages = [...messages, ...messageRes];
                     }
-                    else if(messageRes.content){
+                    else if (messageRes.content) {
                         updatedMessages = [...messages, messageRes];
                     }
                     return updatedMessages;
@@ -34,7 +34,9 @@ const Chat: FC<ChatProps> = (props) => {
 
     return (
         <div className={[props.className, s.chat].join(' ')}>
-            {messages.map((message: any, i:number) => { return (<Message key={i} content={message.content}></Message>) })}
+            {messages.map((message: any, i: number) => {
+                return (<Message key={i} content={message.content} friendMessage={message.userId !== socketUtil.getUserId()}></Message>)
+            })}
         </div>
     );
 }

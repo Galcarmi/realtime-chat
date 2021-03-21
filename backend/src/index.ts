@@ -46,23 +46,23 @@ app.get("/friends", (_: express.Request, res: express.Response) => {
 });
 
 io.on("connection", (socket: any) => {
-  const friendName = socket.handshake.query.username;
-  const friendId = socket.handshake.query.id;
-  const friend = { name: friendName, id: friendId };
-  friendsManager.addFriend(friend);
-  friendsManager.notifyChannelOnNewFriend(friend);
+  const userName = socket.handshake.query.username;
+  const userId = socket.handshake.query.id;
+  const user = { name: userName, id: userId };
+  friendsManager.addFriend(user);
+  friendsManager.notifyChannelOnNewFriend(user);
   console.log("friends pool", friendsManager.getAllConnectedFriends());
 
   socket.on("disconnecting", () => {
-    console.log('friend disconnected', friend)
-    friendsManager.deleteFriend(friend);
-    friendsManager.notifyChannelOnFriendDisconnected(friend);
+    console.log('friend disconnected', user)
+    friendsManager.deleteFriend(user);
+    friendsManager.notifyChannelOnFriendDisconnected(user);
   });
 
   socket.on("message", (message: MessageRequest) => {
     try {
       const messageRequest = new MessageRequest(message);
-      messageManager.sendMessageToChannel(messageRequest);
+      messageManager.sendMessageToChannel(messageRequest, user.id);
     } catch (e) {
       handleError(e);
     }

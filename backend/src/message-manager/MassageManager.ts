@@ -9,12 +9,13 @@ export class MessageManager implements IMessageManager {
   constructor(private m_Socket: socketIo.Server) {
     this.m_Messages = [];
   }
-  sendMessageToChannel(i_MessageRequest : IMessageRequest): void {
+  sendMessageToChannel(i_MessageRequest : IMessageRequest, userId : string): void {
     const message = {
       author: i_MessageRequest.author,
       content: i_MessageRequest.content,
       createdDate: new Date(),
       id: uuidv4(),
+      userId,
     }
     this.m_Messages.push(message);
 
