@@ -1,6 +1,6 @@
 import { IFriend } from "../friends-manager/friend/IFriend";
 import { IMessage } from "./message/IMessage";
-import { IMessageRequest } from "./message/IMessageRequest";
+import { IMessageRequest } from "../../../common/chat-utils/IMessageRequest";
 
 export interface IMessageManager {
   m_Messages:IMessage[];

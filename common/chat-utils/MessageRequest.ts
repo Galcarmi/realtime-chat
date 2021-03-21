@@ -1,4 +1,4 @@
-import { MissingFieldsException } from "./MissingFieldsException";
+import { MissingFieldsException } from "../exceptions/MissingFieldsException";
 import { IMessageRequest } from "./IMessageRequest";
 
 export class MessageRequest implements IMessageRequest{

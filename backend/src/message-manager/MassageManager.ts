@@ -2,7 +2,7 @@ import { IMessageManager } from "./IMessageManager";
 import socketIo from "socket.io";
 import { v4 as uuidv4 } from "uuid";
 import { IMessage } from "./message/IMessage";
-import { IMessageRequest } from "./message/IMessageRequest";
+import { IMessageRequest } from "../../../common/chat-utils/IMessageRequest";
 import { IFriend } from "../friends-manager/friend/IFriend";
 export class MessageManager implements IMessageManager {
   m_Messages: IMessage[];

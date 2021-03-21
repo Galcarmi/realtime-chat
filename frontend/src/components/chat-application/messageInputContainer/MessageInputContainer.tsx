@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import s from './messageInputContainer.module.css';
-import { MessageRequest } from '../../../services/chatService/MessageRequest';
+import { MessageRequest } from '../../../common/chat-utils/MessageRequest';
 import StyledInput from '../../utils/input/StyledInput';
 import Button from '../../utils/button/Button';
 import { socketUtil } from '../../../utils/socket-utils';

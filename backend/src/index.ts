@@ -4,7 +4,7 @@ import socketIo from "socket.io";
 import * as http from "http";
 import cors from "cors";
 import { MessageManager } from "./message-manager/MassageManager";
-import { MessageRequest } from "./message-manager/message/MessageRequest";
+import { MessageRequest } from "../../common/chat-utils/MessageRequest";
 import { FriendsManager } from "./friends-manager/FriendsManager";
 import bodyParser from "body-parser";
 import { handleError } from "./utils/error-utils";
@@ -26,16 +26,6 @@ const friendsManager = new FriendsManager(io);
 app.get("/alive", (req: any, res: any) => {
   res.status(200).json();
 });
-
-// app.post("/message", (req : express.Request, res:express.Response) => {
-//   try {
-//     const messageRequest = new MessageRequest(req.body);
-//     messageManager.sendMessageToChannel(messageRequest);
-//     res.status(200).json();
-//   } catch (e) {
-//     handleError(e, res);
-//   }
-// });
 
 app.get("/messages", (_: express.Request, res: express.Response) => {
   res.send(messageManager.getLastXMessages(10));
