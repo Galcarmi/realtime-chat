@@ -21,15 +21,17 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
         let updatedFriends: any[] = [];
 
         const updateFriendsState = ((friendsRes: any) => {
-            setFriends((friends: any[]) => {
-                if(friendsRes.length && ! (typeof(friendsRes) === 'string')){
-                    updatedFriends = [...friends, ...friendsRes];
-                }
-                else{
-                    updatedFriends = [...friends, friendsRes];
-                }
-                return updatedFriends;
-            });
+            if(friendsRes.length || friendsRes.name){
+                setFriends((friends: any[]) => {
+                    if(friendsRes.length){
+                        updatedFriends = [...friends, ...friendsRes];
+                    }
+                    else if(friendsRes.name){
+                        updatedFriends = [...friends, friendsRes];
+                    }
+                    return updatedFriends;
+                });
+            }
         })
 
         const deleteFriendFromState = (i_Friend:IFriend) =>{
@@ -45,6 +47,7 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
     }, []);
     return (
         <div className={props.className}>
+            <Line horizontal />
             {friends.map((friend) => 
                 <div key={friend.id}><FriendView name={friend.name}></FriendView>
                 <Line horizontal /></div>
