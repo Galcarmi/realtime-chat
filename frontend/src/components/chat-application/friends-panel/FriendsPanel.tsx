@@ -45,11 +45,12 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
         socketUtil.getSocket().on('newUser', updateFriendsState);
         socketUtil.getSocket().on('friendDisconnected', deleteFriendFromState);
     }, []);
+    
     return (
         <div className={props.className}>
             <Line horizontal />
             {friends.map((friend) => 
-                <div key={friend.id}><FriendView name={friend.name}></FriendView>
+                <div key={friend.id}><FriendView name={friend.name} isFriendView={friend.id !== socketUtil.getUserId()}></FriendView>
                 <Line horizontal /></div>
             )}
         </div>
