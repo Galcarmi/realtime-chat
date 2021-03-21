@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import Message from './message/Message';
 import s from './chat.module.css';
 import { messageService } from '../../../services/messageService/messageService';
-import { socket } from '../../../utils/socket-utils';
+import { socketUtil } from '../../../utils/socket-utils';
 interface ChatProps {
     className?: string;
 }
@@ -28,7 +28,7 @@ const Chat: FC<ChatProps> = (props) => {
         
         messageService.getOlderMessages().then(updateMessagesState);
 
-        socket.on("global", updateMessagesState);
+        socketUtil.getSocket().on("global", updateMessagesState);
     }, []);
 
 

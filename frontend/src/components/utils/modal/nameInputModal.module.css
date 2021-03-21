@@ -40,3 +40,9 @@
     margin-top:10%;
     width:20%;
 }
+
+.errorTXTStyle{
+    font-size: 1.5em;
+    color:red;
+    margin-top:20px;
+}
