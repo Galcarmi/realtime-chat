@@ -5,7 +5,6 @@ const serverPath = "http://localhost:8000";
 class ChatService {
   getOlderMessages() {
     return getFromServer("/messages").then((res) => {
-      console.log(res)
       if (res && res.data) {
         return res.data;
       } else {
@@ -20,7 +19,6 @@ class ChatService {
 
   getConnectedUsers() {
     return getFromServer("/friends").then((res) => {
-      console.log(res)
       if (res && res.data) {
         return res.data;
       } else {

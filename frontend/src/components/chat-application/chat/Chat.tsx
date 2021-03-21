@@ -15,23 +15,22 @@ const Chat: FC<ChatProps> = (props) => {
         let updatedMessages: any[] = [];
 
         const updateMessagesState = ((messageRes: any) => {
-            setMessages((messages: any[]) => {
-                if(messageRes.length){
-                    updatedMessages = [...messages, ...messageRes];
-                }
-                else{
-                    updatedMessages = [...messages, messageRes];
-                }
-                return updatedMessages;
-            });
+            if(messageRes.content || messageRes.length){
+                setMessages((messages: any[]) => {
+                    if(messageRes.length){
+                        updatedMessages = [...messages, ...messageRes];
+                    }
+                    else if(messageRes.content){
+                        updatedMessages = [...messages, messageRes];
+                    }
+                    return updatedMessages;
+                });
+            }
         })
-        
         chatService.getOlderMessages().then(updateMessagesState);
 
         socketUtil.getSocket().on("global", updateMessagesState);
     }, []);
-
-
 
     return (
         <div className={[props.className, s.chat].join(' ')}>

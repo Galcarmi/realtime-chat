@@ -16,14 +16,14 @@ export class FriendsManager implements IFriendsManager{
         this.m_Friends.push(i_Friend);
     }
     deleteFriend(i_Friend: IFriend): void {
-        this.m_Friends = this.m_Friends.filter(friend=>friend.name !== i_Friend.name)
+        this.m_Friends = this.m_Friends.filter(friend=>friend.id !== i_Friend.id)
     }
 
-    notifyChannelOnNewFriend(i_FriendName:string){
-        this.m_Socket.emit('newUser', i_FriendName);
+    notifyChannelOnNewFriend(i_Friend:IFriend): void {
+        this.m_Socket.emit('newUser', i_Friend);
     }
 
-    notifyChannelOnFriendDisconnected(i_FriendName:string){
-        this.m_Socket.emit('friendDisconnected', i_FriendName);
+    notifyChannelOnFriendDisconnected(i_Friend:IFriend){
+        this.m_Socket.emit('friendDisconnected', i_Friend);
     }
 }

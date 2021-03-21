@@ -5,6 +5,6 @@ export interface IFriendsManager {
   getAllConnectedFriends():IFriend[];
   addFriend(i_Friend:IFriend):void;
   deleteFriend(i_Friend:IFriend):void;
-  notifyChannelOnNewFriend(i_FriendName:string):void;
-  notifyChannelOnFriendDisconnected(i_FriendName:string):void;
+  notifyChannelOnNewFriend(i_Friend:IFriend):void;
+  notifyChannelOnFriendDisconnected(i_Friend:IFriend):void;
 }

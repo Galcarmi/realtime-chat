@@ -8,13 +8,20 @@ type FriendsPanelProps = {
     className: string;
 }
 
+export interface IFriend{
+    name:string;
+    id:string;
+}
+
+
 const FriendsPanel: FC<FriendsPanelProps> = (props) => {
-    const [friends, setFriends] = useState<string[]>([])
+    const [friends, setFriends] = useState<IFriend[]>([])
 
     useEffect(() => {
         let updatedFriends: any[] = [];
 
         const updateFriendsState = ((friendsRes: any) => {
+            console.log('ressss', friendsRes)
             setFriends((friends: any[]) => {
                 if(friendsRes.length && ! (typeof(friendsRes) === 'string')){
                     updatedFriends = [...friends, ...friendsRes];
@@ -39,8 +46,8 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
     }, []);
     return (
         <div className={props.className}>
-            {friends.map((friendName,i) => 
-                <div key={i}><FriendView name={friendName}></FriendView>
+            {friends.map((friend) => 
+                <div key={friend.id}><FriendView name={friend.name}></FriendView>
                 <Line horizontal /></div>
             )}
         </div>

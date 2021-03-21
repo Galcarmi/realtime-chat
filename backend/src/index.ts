@@ -47,13 +47,15 @@ app.get("/friends", (_ : express.Request, res:express.Response) => {
 
 io.on("connection", (socket: any) => {
   const friendName = socket.handshake.query.username;
-  friendsManager.addFriend(friendName);
-  friendsManager.notifyChannelOnNewFriend(friendName);
+  const friendId = socket.handshake.query.id;
+  const friend = {name:friendName,id:friendId};
+  friendsManager.addFriend(friend);
+  friendsManager.notifyChannelOnNewFriend(friend);
   console.log("friends pool", friendsManager.getAllConnectedFriends());
 
   socket.on("disconnecting", () => {
-    friendsManager.deleteFriend(friendName);
-    friendsManager.notifyChannelOnFriendDisconnected(friendName);
+    friendsManager.deleteFriend(friend);
+    friendsManager.notifyChannelOnFriendDisconnected(friend);
   });
 });
 
