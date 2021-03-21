@@ -3,7 +3,7 @@ import FriendView from './friend-view/FriendView';
 import Line from '../../utils/line/Line';
 import { socketUtil } from '../../../utils/socket-utils';
 import { chatService } from '../../../services/chatService/chatService';
-import { IFriend } from '../../../../../common/chat-utils/IFreind';
+import { IFriend } from '../../../../../common/chat-utils/IFriend';
 
 type FriendsPanelProps = {
     className: string;
@@ -46,8 +46,10 @@ const FriendsPanel: FC<FriendsPanelProps> = (props) => {
         <div className={props.className}>
             <Line horizontal />
             {friends.map((friend) =>
-                <div key={friend.id}><FriendView name={friend.name} isFriendView={friend.id !== socketUtil.getUserId()}></FriendView>
-                    <Line horizontal /></div>
+                <div key={friend.id}>
+                    <FriendView name={friend.name} isFriendView={friend.id !== socketUtil.getUserId()} />
+                    <Line horizontal />
+                </div>
             )}
         </div>
     );

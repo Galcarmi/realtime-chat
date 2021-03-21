@@ -21,10 +21,18 @@ const Header: FC<MessageInputProps> = (props) => {
         setInputContent('');
     }
 
+    const handleEnterPress = (e : React.KeyboardEvent<HTMLInputElement>)=>{
+        if (e.key === 'Enter') {
+            handleSendMessage();
+        }
+    }
+
     return (
         <div className={[props.className, s.layout].join(' ')}>
-            <StyledInput inputContent={inputContent} onChange={e => { setInputContent(e.target.value) }}></StyledInput>
-            <Button handleClick={handleSendMessage} label="Send"></Button>
+            <StyledInput inputContent={inputContent}
+             onChange={e => { setInputContent(e.target.value) }}
+             onKeyDown={handleEnterPress}/>
+            <Button handleClick={handleSendMessage} label="Send"/>
         </div>
     );
 }

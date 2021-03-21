@@ -22,12 +22,24 @@ const NameInputModal: FC<NameInputModalProps> = (props) => {
             setIsError(true);
         }
     };
+
+    const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleClick();
+        }
+    }
+
     return (
         <Modal>
             <div className={s.layout}>
                 <div className={s.title}>Enter your name</div>
-                <StyledInput inputContent={inputContent} onChange={e => { setInputContent(e.target.value) }} className={s.nameInput} ></StyledInput>
-                <Button handleClick={handleClick} className={s.btn} label="Lets GO!" />
+                <StyledInput inputContent={inputContent}
+                    onChange={e => { setInputContent(e.target.value) }}
+                    className={s.nameInput}
+                    onKeyDown={handleEnterPress} />
+                <Button handleClick={handleClick}
+                    className={s.btn}
+                    label="Lets GO!" />
                 {isError && <div className={s.errorTXTStyle}> username is empty!</div>}
             </div>
         </Modal>
