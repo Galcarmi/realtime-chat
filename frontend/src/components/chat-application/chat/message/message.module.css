@@ -30,9 +30,11 @@
 
 .friendMessageAuthor{
     color:black;
+    font-size:0.8em;
 }
 
 .userMessageAuthor{
     text-align: right;
     color:black;
+    font-size:0.8em;
 }
