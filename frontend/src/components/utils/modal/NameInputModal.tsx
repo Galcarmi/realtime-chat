@@ -3,7 +3,6 @@ import Button from '../button/Button';
 import StyledInput from '../input/StyledInput';
 import Modal from './Modal';
 import s from './nameInputModal.module.css';
-import { socketUtil } from '../../../utils/socket-utils';
 
 type NameInputModalProps = {
     setNameCallback: Function;
@@ -15,8 +14,7 @@ const NameInputModal: FC<NameInputModalProps> = (props) => {
 
     const handleClick = () => {
         if (inputContent) {
-            socketUtil.setUsername(inputContent);
-            props.setNameCallback();
+            props.setNameCallback(inputContent);
         }
         else {
             setIsError(true);
